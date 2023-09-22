@@ -12,7 +12,7 @@ import './app.css';
 export function App() {
   return (
     <ContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/react-food">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

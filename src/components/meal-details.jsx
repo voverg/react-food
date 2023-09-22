@@ -1,5 +1,5 @@
 export function MealDetails({meal}) {
-  const products = meal.ingredients.map((product, index) => {
+  const products = meal.ingredients ? meal.ingredients.map((product, index) => {
     return (
       <div className="products__row" key={index}>
         <div className="products__ingredient">{product.ingredient}</div>
@@ -7,7 +7,7 @@ export function MealDetails({meal}) {
         <div className="products__measure">{product.measure}</div>
       </div>
     );
-  });
+  }) : null;
 
   return (
     <>

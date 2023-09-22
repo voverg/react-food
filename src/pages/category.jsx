@@ -28,7 +28,7 @@ export function Category() {
     <section className="category page">
       <div className="breadcrumbs">
         <Link to="/" className="breadcrumbs__link">Home</Link>
-        <span className="breadcrumbs__arrow">&nbsp;>&nbsp;</span>
+        <span className="breadcrumbs__arrow">&nbsp;&gt;&nbsp;</span>
         <span className="breadcrumbs__text">{title}</span>
       </div>
       <h2 className="page__title">Category {title}</h2>

@@ -14,11 +14,16 @@
 }
 .header__inner {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 10px;
 }
 .header__title {
   text-align: center;
   font-size: 36px;
+}
+.header__description {
+  font-size: 18px;
 }
 .header__nav {
   display: flex;
@@ -115,16 +120,45 @@
 }
 
 /*Meal*/
+.meal__nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.meal__country {
+  font-size: 16px;
+  color: var(--primary-bg);
+}
 .meal__details {
   display: flex;
   gap: 20px;
   padding: 30px 0;
 }
 .details__item {
+  width: 50%;
   max-width: 50%;
 }
 .meal__img {
   width: 100%;
+}
+.products__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  font-size: 16px;
+}
+.products__row-header {
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 20px;
+  background-color: var(--primary-bg);
+  color: var(--secondary-color);
+}
+.products__dots {
+  flex-grow: 1;
+  border-bottom: 1px dotted black;
 }
 .recipe__title {
   margin-bottom: 20px;
@@ -201,6 +235,15 @@
 
 
 @media (max-width: 767px) {
+  .header__title {
+    width: 80vw;
+  }
+  .header__description {
+    text-align: center;
+  }
+  .main {
+    padding: 140px 0 15px;
+  }
   .meal__details {
     flex-direction: column;
   }

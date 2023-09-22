@@ -1,6 +1,7 @@
 {
   "name": "react-food",
   "private": true,
+  "homepage": "https://voverg.github.io/react-food",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

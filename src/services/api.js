@@ -62,6 +62,21 @@ export class Api {
   }
 
   createMealItem(item) {
+    const ingredients = [];
+
+    Object.keys(item).forEach((key) => {
+      const pattern = 'strIngredient';
+
+      if (key.includes(pattern) && item[key]) {
+        const ingredient = item[key];
+        const measureIndex = parseInt( key.slice(pattern.length) );
+        const measureKey = `strMeasure${measureIndex}`;
+        const measure = item[measureKey];
+
+        ingredients.push({ingredient, measure});
+      }
+    });
+
     return {
       id: item.idMeal,
       title: item.strMeal,
@@ -69,6 +84,7 @@ export class Api {
       img: item.strMealThumb,
       description: item.strInstructions,
       country: item.strArea,
+      ingredients,
     };
   }
 

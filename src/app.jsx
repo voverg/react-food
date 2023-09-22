@@ -5,8 +5,6 @@ import { Layout } from './layouts/layout.jsx';
 import { Home } from './pages/home.jsx';
 import { Category } from './pages/category.jsx';
 import { Meal } from './pages/meal.jsx';
-import { About } from './pages/about.jsx';
-import { Contact } from './pages/contact.jsx';
 import { NotFound } from './pages/not-found.jsx';
 
 import './app.css';
@@ -21,8 +19,6 @@ export function App() {
             <Route path="home" element={<Navigate to="/" replace />} />
             <Route path="category/:title" element={<Category />} />
             <Route path="category/:categoryTitle/:id" element={<Meal />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

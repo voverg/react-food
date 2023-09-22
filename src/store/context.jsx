@@ -7,6 +7,7 @@ const initialState = {
   loading: true,
   catalog: [],
   category: [],
+  meal: {},
 };
 
 export function ContextProvider(props) {
@@ -20,9 +21,14 @@ export function ContextProvider(props) {
     dispatch({ type: 'SET_CATEGORY', payload: {data} });
   };
 
+  value.setMeal = (data) => {
+    dispatch({ type: 'SET_MEAL', payload: {data} });
+  };
+
   value.setLoading = (isLoading) => {
     dispatch({ type: 'SET_LOADING', payload: {isLoading} });
   };
+
 
   return (
     <FoodContext.Provider value={value}>

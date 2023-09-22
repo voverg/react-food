@@ -20,7 +20,7 @@ export function App() {
             <Route index element={<Home />} />
             <Route path="home" element={<Navigate to="/" replace />} />
             <Route path="category/:title" element={<Category />} />
-            <Route path="category/:title/:id" element={<Meal />} />
+            <Route path="category/:categoryTitle/:id" element={<Meal />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />

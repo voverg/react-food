@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import { Api } from '../services/api.js';
 import { useFoodContext } from '../hooks/use-food-context.js';
-import { CategoryItem } from '../components/category-item.jsx';
+import { CategoryList } from '../components/category-list.jsx';
 import { Loader } from '../components/loader.jsx';
 
 export function Category() {
@@ -25,24 +25,16 @@ export function Category() {
   }, []);
 
   return (
-    <section className="category">
-      <ul className="category__list cards">
-        {loading 
-          ? <Loader />
-          : <CategoryList category={category} />
-        }
-      </ul>
+    <section className="category page">
+      <div className="breadcrumbs">
+        <Link to="/" className="breadcrumbs__link">Home</Link>
+        <span className="breadcrumbs__arrow">&nbsp;>&nbsp;</span>
+        <span className="breadcrumbs__text">{title}</span>
+      </div>
+      <h2 className="page__title">Category {title}</h2>
+      {loading ? <Loader /> : <CategoryList />}
     </section>
   );
 }
 
 
-function CategoryList({category}) {
-  return (
-    <>
-      {category.length
-      ? category.map((item) => <CategoryItem key={item.id} {...item} />)
-      : <h4 className="cards__not-found">Ничего не найдено</h4>}
-    </>
-  );
-}

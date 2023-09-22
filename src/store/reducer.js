@@ -4,6 +4,8 @@ export function reducer(state, {type, payload}) {
       return {...state, catalog: payload.data, loading: false};
     case 'SET_CATEGORY':
       return {...state, category: payload.data, loading: false};
+    case 'SET_MEAL':
+      return {...state, meal: payload.data, loading: false};
     case 'SET_LOADING':
       return {...state, loading: payload.isLoading};
     default:

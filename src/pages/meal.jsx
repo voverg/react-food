@@ -1,47 +1,43 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 import { Api } from '../services/api.js';
 import { useFoodContext } from '../hooks/use-food-context.js';
+import { MealDetails } from '../components/meal-details.jsx';
 import { Loader } from '../components/loader.jsx';
 
 export function Meal() {
-  const {loading, setLoading} = useFoodContext();
-  const [meal, setMeal] = useState({});
-  const {id} = useParams();
+  const {meal, setMeal, loading, setLoading} = useFoodContext();
+  const {categoryTitle, id} = useParams();
   const api = new Api();
 
   const getMeal = () => {
     setLoading(true);
     api.getMeal(id).then((data) => {
-      console.log(data);
       setMeal(data);
-      setLoading(false);
     }).catch((error) => {
       console.log(error);
-      setLoading(false);
     });
   }
 
   useEffect(() => {
     getMeal();
-  }, []);
+  }, [id]);
 
   return (
-    <section className="meal">
+    <section className="meal page">
+      <div className="breadcrumbs">
+        <Link to="/" className="breadcrumbs__link">Home</Link>
+        <span className="breadcrumbs__arrow">&nbsp;>&nbsp;</span>
+        <Link to={`/category/${categoryTitle}`} className="breadcrumbs__link">{categoryTitle}</Link>
+        <span className="breadcrumbs__arrow">&nbsp;>&nbsp;</span>
+        <span className="breadcrumbs__text">{meal.title}</span>
+      </div>
+      <h2 className="page__title">{meal.title}</h2> 
       {loading 
         ? <Loader />
         : <MealDetails meal={meal} />
       }
     </section>
-  );
-}
-
-
-function MealDetails({meal}) {
-  return (
-    <>
-      <h2 className="meal-title">{meal.title}</h2>
-    </>
   );
 }
